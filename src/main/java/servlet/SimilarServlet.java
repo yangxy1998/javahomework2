@@ -2,8 +2,6 @@ package servlet;
 
 import recommend.Recommender;
 import recommend.RecommenderImpl;
-import segmenter.ChineseSegmenterImpl;
-import tf_idf.TF_IDFImpl;
 import util.FileHandler;
 import util.FileHandlerImpl;
 import vo.StockInfo;
@@ -25,11 +23,11 @@ public class SimilarServlet  extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 数据处理
-        StockInfo[] stockInfos = fileHandler.getStockInfoFromFile("data.txt");
+        StockInfo[] stockInfos = fileHandler.getStockInfoFromFile("E:\\GitHub\\homework_2\\src\\main\\resources\\data.txt");
         //矩阵
         double[][] matrix, recommend;
         //获得用户兴趣数据
-        UserInterest[] userInterests = fileHandler.getUserInterestFromFile("interest.txt");
+        UserInterest[] userInterests = fileHandler.getUserInterestFromFile("E:\\GitHub\\homework_2\\src\\main\\resources\\interest.txt");
         //分析股票相似度
         matrix = recommender.calculateMatrix(stockInfos);
         //根据相似度矩阵推荐用户
